@@ -1,0 +1,75 @@
+.center-perfiles {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    position: relative;
+    padding: 5px;
+}
+
+.center-perfiles h4 {
+    position: relative;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 20px;
+    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.container-perfiles {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.row-perfil {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    left: 850px;
+}
+
+.row-perfil h3 {
+    position: relative;
+    font-size: 18px;
+    font-weight: 200;
+    color: #909090;
+    margin-right: 30px;
+}
+
+.row-perfil img {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-left: 70px;
+}
+
+.row-perfil img:hover {
+    box-sizing: border-box;
+    outline: 3px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.btn-out {
+    position: relative;
+    padding: 10px 35px;
+    background-color: transparent;
+    border: 2px solid #505050;
+    color: #909090;
+    font-size: 15px;
+    border-radius: 10px;
+}
+
+.btn-out:hover {
+    color: white;
+    border: 2px solid #fff;
+    cursor: pointer;
+    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}

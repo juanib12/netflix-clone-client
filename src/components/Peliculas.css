@@ -1,0 +1,124 @@
+* {
+    scrollbar-color: #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+
+    width: 5px;
+    height: 13px;
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #303030;
+    border-radius: 10px;
+}
+
+.container-movies {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.carousel {
+    margin-top: 10px;
+    overflow-x:auto;
+    overflow-y: hidden;
+    position: relative;
+    height: 400px;
+    margin-bottom: 20px;
+}
+
+.carousel_genres {
+    margin-top: 10px;
+    overflow-x:auto;
+    overflow-y: hidden;
+    position: relative;
+    height: 250px;
+    margin-bottom: 150px;
+}
+
+.carousel__container {
+    white-space: nowrap;
+    margin: 70px 0px;
+}
+
+.carousel__item {
+    border-radius: 7px;
+    overflow: hidden;
+    margin-right: 5px;
+    display: inline-block;
+    cursor: pointer;
+    transition: 450ms all;
+    transform-origin: center;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    max-width: 200px;
+    margin-left: 10px;
+}
+
+.carousel__item img {
+    position: relative;
+    width: 150px;
+    height: 250px;
+}
+
+.carousel__container:hover .carousel__item:hover {
+    transform: scale(1.1);
+}
+
+.carousel__card{
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-self: center;
+    background-color: #202020;
+    /* width: 100px; */
+    height: 100px;
+}
+
+.carousel__card:hover{
+    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.carousel__card h2{
+    position: relative;
+    font-size: 18px;
+    overflow-wrap: break-word;
+    padding: 10px 15px;
+}
+
+.field{
+    position: relative;
+    padding: 12px 22px;
+    top: 20px;
+    background-color: #303030;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 7px;
+    width: 500px;
+}
+
+.search_container{
+    position: relative;
+    margin-top: 50px;
+}
+
+.form-search{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.message{
+    font-size: 15px;
+    position: relative;
+}

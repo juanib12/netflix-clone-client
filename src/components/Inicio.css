@@ -1,0 +1,18 @@
+body {
+  background-color: #141414;
+  color: white;
+}
+
+.container {
+  position: relative;
+  padding-left: 100px;
+}
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 300px;
+  margin-right: 100px;
+}

@@ -1,0 +1,107 @@
+
+
+.sombra-img {
+  background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.sombra-img img {
+  top: -50px;
+  position: absolute;
+  filter: brightness(50%);
+  width: 100%;
+}
+
+.container-login {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+  background-color: rgb(0, 0, 0, 0.7);
+  margin-left: 500px;
+  margin-right: 500px;
+  padding: 25px 40px;
+  border-radius: 5px;
+  color: white;
+}
+
+.tabs-login {
+  position: relative;
+  color: white;
+}
+
+.form-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 300px;
+  box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.1);
+}
+
+.textfield {
+  background-color: #fff;
+  width: 270px;
+  margin-bottom: 15px;
+  border-radius: 7px;
+  padding: 20px 25px;
+  font-size: 15px;
+  border: none;
+}
+
+.textfield:focus {
+  outline: none;
+}
+
+.form-login h2 {
+  font-size: 22px;
+  color: white;
+  margin-bottom: 30px;
+}
+
+.form-login button {
+  margin-top: 10px;
+  padding: 15px 20px;
+  width: 300px;
+}
+
+.form-footer {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-footer p{
+    color: #909090;
+}
+
+.form-footer h4{
+    position: relative;
+    top: -15px;
+    color: #909090;
+    left: -10px;
+}
+
+.form-footer h3{
+    position: relative;
+    top: -15px;
+    text-decoration: none;
+    color: white;
+    font-weight: 800;
+    font-size: 15px;
+    left: 0px;
+}
+
+.btn-login{
+  background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.error-register{
+  position: relative;
+  font-size: 16px;
+  color: rgb(255, 0, 0);
+  font-weight: 300;
+}
