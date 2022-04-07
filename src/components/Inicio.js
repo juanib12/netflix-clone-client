@@ -1,4 +1,4 @@
-import { Button, Modal } from "@mui/material";
+
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import Login from "./Login";
 import { UserContext } from "./UserContext";
@@ -15,11 +15,12 @@ import Loader from "./Loader";
 const Inicio = () => {
   const [userContext, setUserContext] = useContext(UserContext);
 
+  //esto se llama desde el useEffect siempre que userContext.details no tenga ningun valor
   const fetchUserDetails = useCallback(() => {
     fetch(process.env.REACT_APP_API_ENDPOINT + "user/me", {
       method: "GET",
       credentials: "include",
-      // Pass authentication token as bearer token in header
+      //la respuesta se guarda en userContext.details
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${userContext.token}`,
@@ -32,11 +33,10 @@ const Inicio = () => {
         });
       } else {
         if (response.status === 401) {
-          // Edge case: when the token has expired.
-          // This could happen if the refreshToken calls have failed due to network error or
-          // User has had the tab open from previous day and tries to click on the Fetch button
+          //podria ser cuando el token expira, recarga la pagina
           window.location.reload();
         } else {
+          //si hay algun error, establecemos userContext.details en nulo.
           setUserContext((oldValues) => {
             return { ...oldValues, details: null };
           });
@@ -46,7 +46,7 @@ const Inicio = () => {
   }, [setUserContext, userContext.token]);
 
   useEffect(() => {
-    // fetch only when user details are not present
+     // solo cuando los detalles del usuario no existen.
     if (!userContext.details) {
       fetchUserDetails();
     }

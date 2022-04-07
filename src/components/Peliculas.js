@@ -23,11 +23,11 @@ const Peliculas = () => {
 
   return (
     <div>
-      <section class="carousel">
-        <div class="carousel__container">
+      <section className="carousel">
+        <div className="carousel__container">
           <h3>Populares</h3>
           {movie.map((mov) => (
-            <div class="carousel__item" key={mov.id}>
+            <div className="carousel__item" key={mov.id}>
               <img
                 src={`https://image.tmdb.org/t/p/w500/${mov.poster_path}`}
                 className="item-img"

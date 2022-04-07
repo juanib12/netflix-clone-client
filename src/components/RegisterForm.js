@@ -4,7 +4,6 @@ import { TextField, Button } from "@mui/material";
 import "./Login.css";
 
 const RegisterForm = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [name, setFirstName] = useState("");
   const [lastname, setLastName] = useState("");
@@ -17,7 +16,6 @@ const RegisterForm = () => {
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
     setError("");
 
     const genericErrorMessage = "Un problema ha ocurrido, inténtelo más tarde.";
@@ -37,7 +35,6 @@ const RegisterForm = () => {
       }),
     })
       .then(async (response) => {
-        setIsSubmitting(false);
         if (!response.ok) {
           if (response.status === 400) {
             setError("Por favor complete todos los campos!");
@@ -58,7 +55,6 @@ const RegisterForm = () => {
         }
       })
       .catch((error) => {
-        setIsSubmitting(false);
         setError(genericErrorMessage);
       });
   };
@@ -72,42 +68,38 @@ const RegisterForm = () => {
       )}
 
       <form onSubmit={formSubmitHandler} className="form-login">
-        <form labelFor="firstName" className="forms-login">
+        <form className="forms-login">
           <h2>¡Hola! Para seguir, ingresá los siguientes datos.</h2>
           <input
             id="firstName"
-            label="Nombre"
             className="textfield"
             onChange={(e) => setFirstName(e.target.value)}
             value={name}
             placeholder="Nombre"
           />
         </form>
-        <form labelFor="firstName" className="forms-login">
+        <form className="forms-login">
           <input
             id="lastName"
-            label="Apellido"
             className="textfield"
             onChange={(e) => setLastName(e.target.value)}
             placeholder="Apellido"
             value={lastname}
           />
         </form>
-        <form labelFor="email" className="forms-login">
+        <form className="forms-login">
           <input
             id="email-register"
             type="email"
-            label="Email"
             onChange={(e) => setEmail(e.target.value)}
             value={email}
             className="textfield"
             placeholder="Email"
           />
         </form>
-        <form labelFor="password" className="forms-login">
+        <form className="forms-login">
           <input
             id="password-register"
-            label="Contraseña"
             type="password"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
@@ -115,17 +107,16 @@ const RegisterForm = () => {
             placeholder="Contraseña"
           />
         </form>
-        <form labelFor="addres" className="forms-login">
+        <form className="forms-login">
           <input
             id="addres"
-            label="Domicilio"
             className="textfield"
             onChange={(e) => setAddres(e.target.value)}
             value={addres}
             placeholder="Domicilio"
           />
         </form>
-        <form labelFor="perfil" className="forms-login">
+        <form className="forms-login">
           <input
             id="perfilName"
             className="textfield"
@@ -134,7 +125,7 @@ const RegisterForm = () => {
             placeholder="Perfil Name"
           />
         </form>
-        <form labelFor="perfil" className="forms-login">
+        <form className="forms-login">
           <input
             id="perfilAvatar"
             className="textfield"
@@ -144,8 +135,6 @@ const RegisterForm = () => {
           />
         </form>
         <Button
-          disabled={isSubmitting}
-          text={`${isSubmitting ? "Registering" : "Register"}`}
           variant="contained"
           type="submit"
           className="btn-login"

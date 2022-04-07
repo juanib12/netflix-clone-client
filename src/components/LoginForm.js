@@ -1,22 +1,22 @@
 import { UserContext } from "./UserContext";
-import { TextField, Button } from "@mui/material";
+import { Button } from "@mui/material";
 import "./Login.css";
 import React, { useContext, useState } from "react";
 
 const LoginForm = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState(""); //se usa para mostrar un mensaje de error en caso de que falle.
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userContext, setUserContext] = useContext(UserContext);
 
+  //primero deshabilitamos el envio predeterminado del formulario con e.preventDefault();
   const formSubmitHandle = (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
     setError("");
 
-    const genericErrorMessage = "Algo ha ocurrido mal";
+    const genericErrorMessage = "Algo ha ocurrido mal, inténtelo mas tarde.";
 
+    //llamamos a user/login con los parametros usuario y contraseña en el body.
     fetch(process.env.REACT_APP_API_ENDPOINT + "user/login", {
       method: "POST",
       credentials: "include",
@@ -24,9 +24,9 @@ const LoginForm = () => {
       body: JSON.stringify({ username: email, password }),
     })
       .then(async (response) => {
-        setIsSubmitting(false);
         if (!response.ok) {
           if (response.status === 400) {
+            //en caso de error mostramos el mensaje
             setError("Por favor complete todos los campos!");
           } else if (response.status === 401) {
             setError("Email o contraseña incorrectas.");
@@ -34,6 +34,7 @@ const LoginForm = () => {
             setError(genericErrorMessage);
           }
         } else {
+          //de ser exitoso guardamos el valor del token en el contexto del user.
           const data = await response.json();
           setUserContext((oldValues) => {
             return { ...oldValues, token: data.token };
@@ -41,7 +42,6 @@ const LoginForm = () => {
         }
       })
       .catch((error) => {
-        setIsSubmitting(false);
         setError(genericErrorMessage);
       });
   };
@@ -54,11 +54,9 @@ const LoginForm = () => {
       )}
       <form onSubmit={formSubmitHandle} className="form-login">
         <h2>¡Hola! Para seguir, ingresá tu email y contraseña.</h2>
-
-        <form labelFor="email">
+        <form>
           <input
             id="email"
-            label="Email"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -66,10 +64,9 @@ const LoginForm = () => {
             placeholder="Email"
           />
         </form>
-        <form labelFor="password">
+        <form>
           <input
             id="password"
-            label="Contraseña"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -79,8 +76,6 @@ const LoginForm = () => {
         </form>
         <Button
           variant="contained"
-          disabled={isSubmitting}
-          text={`${isSubmitting ? "Signing In" : "Sign In"}`}
           type="submit"
           className="btn-login"
         >
