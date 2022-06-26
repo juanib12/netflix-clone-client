@@ -3,14 +3,28 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { UserProvider } from "./components/UserContext";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./components/Login";
+import Movie from "./components/Movie";
+import { MoviesContextProvider } from "./components/MovieContext";
+import { ClerkProvider } from "@clerk/clerk-react";
+
+const frontendApi = "clerk.alive.pup-96.lcl.dev"
 
 ReactDOM.render(
-  <UserProvider>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </UserProvider>,
+  <ClerkProvider frontendApi={frontendApi}>
+    <BrowserRouter>
+      <MoviesContextProvider>
+        <React.StrictMode>
+          <Routes>
+            <Route path="/" element={<App />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/movie" element={<Movie />} />
+          </Routes>
+        </React.StrictMode>
+      </MoviesContextProvider>
+    </BrowserRouter>
+  </ClerkProvider>,
   document.getElementById("root")
 );
 
